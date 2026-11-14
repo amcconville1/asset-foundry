@@ -1,0 +1,13 @@
+{
+  "family": "prop",
+  "name": "pillar",
+  "seed": 1,
+  "brief": "A plain stone pillar: square plinth, tapering shaft, square cap.",
+  "parts": [
+    {"id": "plinth", "part": "block", "size": [0.9, 0.9, 0.3], "chamfer": 0.04, "region": "stone"},
+    {"id": "shaft", "part": "loft", "at": "plinth.top", "shape": "round", "sides": 10, "region": "stone",
+     "sections": [[0.0, 0.6, 0.6], [2.4, 0.5, 0.5]]},
+    {"id": "cap", "part": "block", "at": "shaft.top", "size": [0.8, 0.8, 0.25], "taper": 1.15, "region": "stone"}
+  ],
+  "sockets": {"base": "plinth.base"}
+}

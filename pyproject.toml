@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "asset-foundry"
+version = "0.1.0"
+description = "Recipe-built 3D assets in parallel variant rounds, reviewed in a catalog. Blender does export and rendering; shapes are plain Python."
+requires-python = ">=3.11"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "Alexander McConville" }]
+keywords = ["blender", "3d", "procedural", "gltf", "game-assets", "ai-agents"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+  "Topic :: Games/Entertainment",
+]
+dependencies = []
+
+[project.optional-dependencies]
+sheet = ["Pillow>=10"]
+dev = ["pytest>=8", "Pillow>=10"]
+
+[project.scripts]
+foundry = "foundry.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["foundry*"]
+
+[tool.setuptools.package-data]
+"foundry.review" = ["static/*.html", "static/*.js", "static/vendor/*", "static/vendor/*/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

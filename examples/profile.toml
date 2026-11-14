@@ -1,0 +1,37 @@
+# An example profile. Copy it into your project and change what you need.
+# Paths are relative to `root`, which is relative to this file.
+
+[foundry]
+root = "."
+catalog = "out/catalog"      # where collections and rounds live
+parallel = 4                 # Blender processes at once
+# blender = "C:/Program Files/Blender Foundation/Blender 5.1/blender.exe"   # else $BLENDER, PATH, standard install
+# reference = "path/to/a/reference_figure.glb"   # shown beside each asset for scale
+# parts = ["my_parts"]       # your own builder modules (see README: Adding a builder)
+# parts_path = "tools"       # where those modules live
+
+# Silhouette sizes on the sheet: how big the asset is on screen at these distances.
+[views]
+near = { distance = 3.0, fov = 60.0, screen_h = 1080 }
+far = { distance = 30.0, fov = 60.0, screen_h = 1080 }
+
+[family.weapon]
+tri_budget = 500
+sockets = ["grip"]
+size_min = 0.2
+size_max = 3.2
+extent = 3.0                 # metres the turnaround shows, the same for every variant
+round_first = 12             # variants in a first round
+round_next = 4               # variants in each later round
+
+[family.prop]
+tri_budget = 800
+# no extent: each prop is framed to its own size (props vary too much to share one frame)
+round_first = 8
+round_next = 4
+region_tints = { glass = [0.55, 0.75, 0.8] }
+
+# Commands run on round events; {collection}, {round} and {catalog} are filled in.
+[hooks]
+# ready = "python notify.py {collection} {round}"
+# reviewed = "python notify.py {collection} {round} reviewed"
