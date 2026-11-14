@@ -143,6 +143,12 @@ Each variant's folder holds `recipe.json`, `model.glb` (one merged mesh plus soc
 anchors and axes), `report.json` (stats and rule results), `renders/` and `sheet.png`.
 Collections live under the profile's `catalog` as plain files.
 
+## Contributing
+
+See `CONTRIBUTING.md` (people) and `AGENTS.md` (AI agents). The short version: tests pass
+without Blender, errors say how to fix, and nothing from your own projects comes into this
+repo (a pre-commit check helps: `git config core.hooksPath tools/hooks`).
+
 ## Status
 
 Early and in use: one project builds its weapons with it. Not built yet: an MCP server for

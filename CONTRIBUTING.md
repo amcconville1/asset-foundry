@@ -7,14 +7,37 @@ open an issue first so we can agree the shape before you build it.
 
 ```bash
 pip install -e ".[dev]"
+git config core.hooksPath tools/hooks   # the private-data check runs on every commit
 python -m pytest        # must pass; needs no Blender
 foundry doctor          # Blender 5.1+ for builds and renders
 ```
 
+## Keep your projects out of this repo
+
+This repo is public, and people use it from private projects. Nothing from those projects
+comes in here:
+
+- **No project names, people's names or private emails** in code, docs, examples, tests or
+  commit messages. Examples are generic (a sword, a bottle, a pillar).
+- **No project paths.** Never an absolute home-folder path; use relative paths or
+  placeholders like `<you>`.
+- **No project files:** no catalogs, verdicts, review notes, profiles, recipes or builder
+  modules from a real project, and no meshes or `.blend` files. A project's profile, recipes
+  and catalog live in that project's own repository.
+- **Commit with a no-reply email** (`<id>+<user>@users.noreply.github.com`).
+- **When a fix comes from a project's need,** describe the general problem ("a profile can't
+  set X"), not the project.
+
+`tools/check_private.py` enforces the parts a machine can check: home-folder paths, email
+addresses, project file types, and your own private word list. Put one word per line in
+`~/.config/asset-foundry/private-words.txt` (or `$FOUNDRY_PRIVATE_WORDS`). That file stays on
+your machine, so the words themselves are never published. The pre-commit hook runs the
+check on what you stage, and CI runs it on every push (without anyone's private list).
+
 ## Rules for every change
 
-1. **Game- and engine-agnostic.** Nothing in this repo names a particular game, studio,
-   engine path or asset. Project-specific settings belong in a profile, and project-specific
+1. **Game- and engine-agnostic, and private-data free** (see above). Nothing in this repo
+   names a particular game, studio, person, engine path or asset. Project-specific settings belong in a profile, and project-specific
    shapes in the project's own builder module.
 2. **Shapes stay plain Python.** Geometry lives in `foundry/geom.py` and `foundry/parts/`.
    Blender (`foundry/blender_side/`) only exports and renders. If a primitive truly needs

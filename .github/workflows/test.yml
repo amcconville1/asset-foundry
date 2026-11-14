@@ -23,5 +23,6 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: pip install -e ".[dev]"
       - run: python -m pytest -q
+      - run: python tools/check_private.py
       - run: foundry check examples/*/*.json
         shell: bash

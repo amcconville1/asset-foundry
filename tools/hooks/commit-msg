@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks a commit message that names a project or holds a private email or path.
+exec python tools/check_private.py --message "$1"

@@ -3,6 +3,20 @@
 Rules for any agent working in this repo or using it. Read `README.md` first; people
 contributing follow the same rules in `CONTRIBUTING.md`.
 
+## This repo is public: nothing from the project you came from
+
+You are probably working for a project that uses the foundry. That project's names,
+paths, recipes, profiles, catalogs, verdicts, people and emails stay in its own repo.
+
+- Before writing anything here, ask: would this make sense to a stranger with no access to
+  that project? If it names or describes the project, write the general version instead.
+- Examples and tests use made-up, generic content (a sword, a bottle; reviewers "ana", "sam").
+- Commit messages describe the change to the foundry, never the project that needed it.
+- Run `python tools/check_private.py --staged` before committing (the hook does this if it's
+  installed: `git config core.hooksPath tools/hooks`). A failure is a stop: remove the data,
+  don't work around the check.
+- Commit with the person's GitHub no-reply email, never a private one.
+
 ## Building the foundry
 
 - **Game-agnostic.** Nothing here names a game, its paths or its engine. Anything
